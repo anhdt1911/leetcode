@@ -9,13 +9,13 @@ func main() {
 	// addTwoNumbers(l1, l2)
 
 	// longest sub string
-	// s := "pwwkew&^"
-	// maxLen := lengthOfLongestSubstring(s)
-	// fmt.Println(maxLen)
+	s := "bpfbhmipx"
+	maxLen := lengthOfLongestSubstringUseingSlidingWindow(s)
+	fmt.Println(maxLen)
 
 	// median of 2 sorted array
-	arr1 := []int{1, 3}
-	arr2 := []int{2}
-	median := findMedianSortedArrays(arr1, arr2)
-	fmt.Println(median)
+	// arr1 := []int{1, 3}
+	// arr2 := []int{2}
+	// median := findMedianSortedArrays(arr1, arr2)
+	// fmt.Println(median)
 }

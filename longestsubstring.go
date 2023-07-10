@@ -20,3 +20,37 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return maxLen
 }
+
+// bpfbhmipx
+func lengthOfLongestSubstringUseingSlidingWindow(s string) int {
+
+	if len(s) <= 1 {
+		return len(s)
+	}
+
+	runeMap, result, start := make(map[rune]int), 0, 0
+
+	for i, v := range s {
+		if _, ok := runeMap[v]; !ok {
+			runeMap[v] = i
+		} else {
+			start = runeMap[v] + 1
+
+			for j := 0; j < start; j++ {
+				char := rune(s[j])
+				if runeMap[char] >= start {
+					continue
+				}
+				delete(runeMap, char)
+			}
+
+			runeMap[v] = i
+		}
+
+		if len(runeMap) > result {
+			result = len(runeMap)
+		}
+	}
+
+	return result
+}
