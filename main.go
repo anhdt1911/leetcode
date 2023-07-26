@@ -20,6 +20,12 @@ func main() {
 	// fmt.Println(median)
 
 	//longestpalindrome
-	len := longestPalindrome("abcbac")
-	fmt.Println(len)
+	//len := longestPalindrome("abcbac")
+	//fmt.Println(len)
+
+	//zig zac conversion
+	//fmt.Println(convert("paypalishiring", 5))
+
+	// reverse integers
+	fmt.Println(reverse(-1234363543))
 }
