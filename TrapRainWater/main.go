@@ -29,3 +29,25 @@ func trap(height []int) int {
 	}
 	return vol
 }
+func trapV2(height []int) int {
+	left, right := 0, len(height)-1
+	vol, leftCol, rightCol := 0, 0, 0
+	for left < right {
+		if height[left] < height[right] {
+			if height[left] > leftCol {
+				leftCol = height[left]
+			} else {
+				vol += leftCol - height[left]
+			}
+			left++
+		} else {
+			if height[right] > rightCol {
+				rightCol = height[right]
+			} else {
+				vol += rightCol - height[right]
+			}
+			right--
+		}
+	}
+	return vol
+}
