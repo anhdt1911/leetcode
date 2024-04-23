@@ -8,12 +8,12 @@ func main() {
 
 func findMin(nums []int) int {
 	low, high := 0, len(nums)-1
-	for low <= high {
+	for low < high {
 		mid := (low + high) / 2
 		if nums[mid] > nums[high] {
 			low = mid + 1
 		} else {
-			high = mid - 1
+			high = mid
 		}
 	}
 	return nums[low]
