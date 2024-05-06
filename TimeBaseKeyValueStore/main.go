@@ -38,6 +38,9 @@ func (this *TimeMap) Get(key string, timestamp int) string {
 	if !ok {
 		return ""
 	}
+	if timestamp < keyArr[0].timestamp {
+		return ""
+	}
 	left, right := 0, len(keyArr)-1
 	for left < right {
 		mid := (left + right) / 2
@@ -49,15 +52,19 @@ func (this *TimeMap) Get(key string, timestamp int) string {
 			return keyArr[mid].value
 		}
 	}
+	if keyArr[left].timestamp > timestamp {
+		return keyArr[left-1].value
+	}
 	return keyArr[left].value
 }
 
 func main() {
 	tm := Constructor()
-	tm.Set("foo", "bar", 1)
-	fmt.Println(tm.Get("foo", 1))
-	fmt.Println(tm.Get("foo", 3))
-	tm.Set("foo", "bar2", 4)
-	fmt.Println(tm.Get("foo", 4))
-	fmt.Println(tm.Get("foo", 5))
+	tm.Set("love", "high", 10)
+	tm.Set("love", "low", 20)
+	fmt.Println(tm.Get("love", 5))
+	fmt.Println(tm.Get("love", 10))
+	fmt.Println(tm.Get("love", 15))
+	fmt.Println(tm.Get("love", 20))
+	fmt.Println(tm.Get("love", 25))
 }
