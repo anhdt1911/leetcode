@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"regexp"
+)
 
 // key, value, timestamp, which one is unique?
 // key is unique, each key will have a value in given timestamp
@@ -67,4 +71,11 @@ func main() {
 	fmt.Println(tm.Get("love", 15))
 	fmt.Println(tm.Get("love", 20))
 	fmt.Println(tm.Get("love", 25))
+}
+
+func findText(filename string) []byte {
+	searchReg := regexp.MustCompile("partior")
+	b, _ := ioutil.ReadFile(filename)
+	searchSlice := searchReg.Find(b)
+	return searchSlice
 }
